@@ -29,10 +29,10 @@ export class LoanDetailComponent implements OnInit {
     this.loanDetails = JSON.parse(localStorage.getItem('loan_details')) || [];
     this.speceficLoanDetail = JSON.parse(localStorage.getItem('specific_loan_detail')) || [];
     console.log(this.speceficLoanDetail);
-    this.specificLoanAmt =  this.speceficLoanDetail.records[0].Sanction_Amount__c;
+    this.specificLoanAmt =  this.speceficLoanDetail[0].Sanction_Amount__c;
     this.convertedLoanAmt = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(this.specificLoanAmt);
-    this.loanId = this.speceficLoanDetail.records[0].Id;
-    this.loanName = this.speceficLoanDetail.records[0].Name;
+    this.loanId = this.speceficLoanDetail[0].Id;
+    this.loanName = this.speceficLoanDetail[0].Name;
   }
 
   welcomeLetter(){

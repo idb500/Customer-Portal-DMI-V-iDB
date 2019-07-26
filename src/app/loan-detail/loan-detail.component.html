@@ -78,8 +78,8 @@
       <div class="card">
         <div class="card-body">
           <div *ngIf="speceficLoanDetail">
-            <div *ngFor="let loanDetail of speceficLoanDetail.records">
-              <h2 class="h_loandetail">{{loanDetail.Pulled_Lead_Source_Name__c}}: {{loanDetail.Name}}</h2>
+            <div *ngFor="let loanDetail of speceficLoanDetail">
+              <h2 class="h_loandetail">{{loanDetail.Pulled_Lead_Source_Name__c}}: {{loanDetail.name}}</h2>
               <div class="procircle">
                 <span style="width: 15%"></span>
                 <div style="left: 15%">
