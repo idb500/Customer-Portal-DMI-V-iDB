@@ -1,0 +1,128 @@
+<div class="login_page_header">
+  <div class="flexheader">
+    <a rounterLink="!">
+      <img src="assets/Dmifinance-logo.png">
+    </a>
+    <div class="header_Link">
+      <a>About Us</a>
+      <a>Group Leadership</a>
+      <a>Bussiness Verticals</a>
+      <a>Investor Relations</a>
+      <a>CSR</a>
+      <a>Contact Us</a>
+    </div>
+  </div>
+</div>
+
+
+<div class="login-Container">
+  <div class="split left">
+    <div class="centered">
+      <div class="welcomeText">WELCOME TO</div>
+      <div class="portal_title_text">DMI Customer Portal</div>
+      <hr class="hrStyle">
+      <form [formGroup]="loginForm" style="max-width:500px;margin:auto">
+        <div *ngIf="loginSection">
+        <div class="sign_in_with">Sign in With</div>
+
+        <div class="radio-btn-flex">
+          <label class="radio-btn-container" (click)="otpLogin()">OTP
+            <input type="radio" name="radio" checked="checked">
+            <span class="checkmark"></span>
+          </label>
+          <label class="radio-btn-container" (click)="passwordLogin()">Password
+            <input type="radio" name="radio">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+
+        <div class="login-input-container">
+          <div *ngIf="isMobileField">
+          <label for="phone">Mobile No.</label>
+          <div class="inner-icon leftIcon">
+            <img class="input-icon-img phone_icon" src="assets/call-answer.svg">
+            <input class="input-field" type="text" formControlName="phone" maxlength="10">
+            <p *ngIf="phoneNotCurrect" class="warningCor">{{phoneNotCurrect}}</p>
+          </div>
+          </div>
+
+          <div *ngIf="isPassword">
+            <label for="password">Password</label>
+            <div class="inner-icon leftIcon">
+              <img class="input-icon-img" src="assets/lock.svg">
+              <input class="input-field" type="password" formControlName="password">
+            </div>
+          </div>
+
+          <div *ngIf="isOTP">
+            <label for="password">Enter Your OTP</label>
+            <div class="inner-icon leftIcon">
+              <img class="input-icon-img" src="assets/lock.svg">
+              <input class="input-field" type="password" formControlName="otp">
+            </div>
+          </div>
+          <div *ngIf="isHavingPassword">
+            <button type="submit" class="btn" (click)="getLogin()">LOGIN</button>
+          </div>
+          <div *ngIf="notOTP">
+            <button type="submit" class="btn" (click)="sendOTP()">SEND OTP</button>
+          </div>
+          <div *ngIf="isVerifyOTP">
+              <button type="submit" class="btn" (click)="verifyOTP()">VERIFY OTP</button>
+            </div>
+        </div>
+</div>
+
+
+  <div *ngIf="resetPasswordSec">
+      <h3>For future login, Reset your password.</h3>
+      <label for="password">Password</label>
+      <div class="inner-icon leftIcon">
+        <img class="input-icon-img" src="assets/lock.svg">
+        <input class="input-field" type="password" formControlName="new_password">
+      </div>
+      <label for="password">Repeat Password</label>
+      <div class="inner-icon leftIcon">
+        <img class="input-icon-img" src="assets/lock.svg">
+        <input class="input-field" type="password" formControlName="repeat_password">
+      </div>
+      <div class="display_flex">
+          <div class="skip_text" type="submit" (click)="goToDashboard()">SKIP</div>
+          <div class="proceedLogin"><button type="submit" class="btn" (click)="proceedLogin()" style="width: 100%;">PROCEED</button></div>
+        </div>
+  </div>
+
+      </form>
+    </div>
+  </div>
+
+  <div class="split right">
+    <div class="centered">
+      <div><span class="new-text">New</span><br>
+        <h1 class="thinking-text">Thinking</h1>
+        <p class="loan_term_text">To be the leading long-term credit bussiness in New India using technology, creativity
+          and innovative partnerships to bridge the credit gap.</p>
+      </div>
+      <div class="left_video_sec">
+        <div class="content_inline"><a href="https://www.youtube.com/watch?v=jgy8UhRuxu8&t=15s"><img
+              src="assets/play.svg"></a></div>
+        <hr class="play_hr"><br>
+        <p class="video_title">Revolutionising Lending in India</p>
+        <div class="social_icons">
+          <img class="social_icon_margin" src="assets/facebook.svg"> <img class="social_icon_margin"
+            src="assets/twitter.svg"> <img src="assets/linkedin-letters.svg">
+        </div>
+      </div>
+      <a href="https://www.youtube.com/watch?v=jgy8UhRuxu8&t=15s">
+        <div class="dmi_video_div"><img class="dmi_video_image" src="assets/Dmi_video.jpg"></div>
+      </a>
+      <div class="right_video_sec"></div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isLoading" class="overlay">
+    <circle-progress [percent]="100" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
+      [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="35000">
+    </circle-progress>
+</div>

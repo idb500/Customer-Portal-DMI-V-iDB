@@ -1,0 +1,50 @@
+<div class="dashboard_navbar1">
+    <div class="nav_container1">
+      <div class="headerNav_Link1">
+        <a [routerLink]="['/dashboard']" class="header_logo_anch"><img src="assets/logo.png" height="50"></a>
+        <a [routerLink]="['/dashboard']" class="">Dashboard</a>
+        <!-- <div class="dropdown theme-dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Loan Accounts
+          </a>
+          <ul dropdownMenu class="dropdown-menu" role="menu" *ngIf="loanDetail">
+            <li *ngFor="let loan of loanDetail;" value="{{loan.Id}}" (click)="selectValue(loan)" class="dropdown-item">
+              {{loan.name}}
+            </li>
+          </ul>
+        </div> -->
+        <a [routerLink]="['/loanOffer']">Offers</a>
+        <a [routerLink]="['/faq']">FAQ</a>
+        <a [routerLink]="['/customerSupport']" class="activeSty1">Customer Support</a>
+      </div>
+      <div class="profile_icon_div">
+        <div *ngIf="userBasicInfo">
+          <div class="display-flex">
+            <div class="profile_circle">
+              {{userBasicInfo[0].FirstName | slice:0:1}}{{userBasicInfo[0].LastName | slice:0:1}}</div>
+            <div class="user_name">{{userBasicInfo[0].Name}}</div>
+            <div class="dropdown theme-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                style="color: white;"><img src="assets/dots.svg" class="Heaer_profile_Menu_icon"></a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Update Profile</a>
+                <a class="dropdown-item" href="#">Update Bank Details</a>
+                <a class="dropdown-item" (click)="logout()">Sign Out</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="main-container1">
+    <div class="row">
+      <div class="col-sm-12">
+        <!-- <div class="page-title">
+          <h2 class="dashboard_title">LOAN DETAIL</h2>
+        </div> -->
+        <div align="center"><img src="assets/under-dev.jpg" style="opacity: .5;margin-top: 5%;"></div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>

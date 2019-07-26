@@ -1,0 +1,275 @@
+// Dashboard heaer nav baar
+.loanheader {
+  line-height: 2;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.loan_img {
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  background: #222c50;
+  margin-top: 20px;
+  margin-right: 13px;
+  color: white;
+  line-height: 52px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+.user_name {
+  color: #222c50;
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 7px;
+}
+// <end>
+
+.overlay {
+  background: #ffffff;
+  color: #666666;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 5000;
+  top: 0;
+  left: 0;
+  float: left;
+  text-align: center;
+  padding-top: 15%;
+}
+
+.column_left {
+  width: 30%;
+  float: left;
+}
+.column_right {
+  width: 60%;
+}
+.card {
+  position: relative;
+  box-shadow: 0 0px 20px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  border-radius: 5px;
+  background: white;
+  margin-bottom: -10px;
+}
+.card .card-container {
+  padding: 2px 16px;
+}
+.card-header {
+  height: 122px;
+  background: #222c50;
+}
+.congrats_card {
+  min-height: 210px;
+  margin-top: 9%;
+}
+.display-flex {
+  display: flex;
+  width: 123%;
+}
+.loan_card {
+  margin-left: 5px;
+  margin-bottom: 32px;
+  position: relative;
+}
+.left_10 {
+  margin-left: -10px;
+}
+.welcome_user_text {
+  color: whitesmoke;
+  font-weight: 800;
+}
+.tile_user_name {
+  color: whitesmoke;
+  font-size: 22px;
+  margin-bottom: 5px;
+  margin-top: -20px;
+}
+.last_login {
+  color: whitesmoke;
+  font-size: 13px;
+  margin: 0px 25px;
+}
+.tile_user_info {
+  padding: 10px 25px 0px;
+}
+.flex-Display {
+  display: flex;
+  margin-bottom: -17px;
+  // font-size: 16px;
+}
+.userInfo-card-container {
+  padding: 25px 25px;
+}
+.left_45 {
+  margin-left: 95px;
+  margin-bottom: 24px;
+}
+.left_38 {
+  margin-left: 89px;
+  margin-bottom: 24px;
+}
+.left_24 {
+  margin-left: 37px;
+  max-width: 335px;
+}
+.left_74 {
+  margin-left: 74px;
+}
+.tile_userInfo_hr {
+  margin: 35px 26px 20px 25px;
+  opacity: 0.5;
+  border: 1px solid lightgray;
+}
+.homeAddress {
+  // font-size: 16px;
+  margin-bottom: -9px;
+}
+.user_address_text {
+  font-size: 13px;
+}
+.account_container {
+  padding-left: 25px;
+  padding-bottom: 40px;
+}
+.loan_icon {
+  text-align: center;
+  padding: 12px;
+}
+.loan_head_hr {
+  width: 100%;
+  opacity: 0.5;
+  border: 1px solid lightgray;
+  z-index: 1;
+}
+.batch_btn {
+  color: white !important;
+  padding: 2;
+  border: none;
+  font-size: 11px;
+  opacity: 0.9;
+  opacity: 1;
+  padding: 5px;
+  border-radius: 3px;
+  padding: 5px 13px 5px 13px;
+  z-index: 8;
+}
+.samsung_img {
+  height: 30px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+.loan_hr_div {
+  width: 100%;
+  position: absolute;
+}
+.batch_div {
+  z-index: 9;
+}
+.loan_card_container {
+  padding: 26px 24px 18px 26px;
+}
+.loan_display_flex {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  // font-size: 16px;
+}
+.offer_vl_line {
+  border-left: 1px solid lightgray;
+  height: 180px;
+  margin: 15px 13px 0px 29px;
+}
+.offer_display_flex {
+  display: flex;
+}
+.offer_icon {
+  height: 60px;
+  width: 60px;
+  margin-top: 10%;
+  margin-left: 14px;
+}
+.offer_header {
+  margin-top: 5%;
+  color: #222c50;
+  font-weight: 700;
+  margin-bottom: -12px;
+}
+.offer_p {
+  // font-size: 16px;
+  max-width: 273px;
+  margin-top: 16px !important;
+}
+.btn {
+  color: #fff;
+  background: #0a5697;
+  border: 1px solid #0a5697;
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  padding: 9px 20px;
+  margin-bottom: 30px;
+  transition: all 0.2s linear;
+  font-size: 14px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.viewDetailSty {
+  background: #114b82;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  letter-spacing: 1.2px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.paynowSty {
+  background: #0e5599;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  letter-spacing: 1.2px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.loanFooterBtn {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+.loan_btn_flex {
+  display: flex;
+  vertical-align: bottom;
+  bottom: 0;
+  margin-top: 27px;
+}
+.mobikwik_font {
+  font-size: 18px;
+  margin-top: -1px;
+  margin-bottom: -6px;
+}
+.dashboard_title {
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: -13px;
+}
+.loanTitle {
+  margin-left: -10px !important;
+}
+.R_ecs {
+  padding: 8px 4px;
+  color: #0e5599 !important;
+  font-weight: 600;
+  // font-size: 16px;
+  cursor: pointer;
+}
+.display_flex {
+  display: flex;
+  justify-content: flex-end;
+}
+
+// <end>

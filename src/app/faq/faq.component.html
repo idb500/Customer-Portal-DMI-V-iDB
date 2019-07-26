@@ -1,0 +1,258 @@
+<div class="dashboard_navbar1">
+    <div class="nav_container1">
+      <div class="headerNav_Link1">
+        <a [routerLink]="['/dashboard']" class="header_logo_anch"><img src="assets/logo.png" height="50"></a>
+        <a [routerLink]="['/dashboard']" class="">Dashboard</a>
+        <a [routerLink]="['/loanOffer']">Offers</a>
+        <a [routerLink]="['/faq']" class="activeSty1">FAQ</a>
+        <a [routerLink]="['/customerSupport']" class="">Customer Support</a>
+      </div>
+      <div class="profile_icon_div">
+        <div *ngIf="userBasicInfo">
+          <div class="display-flex">
+            <div class="profile_circle">
+              {{userBasicInfo[0].FirstName | slice:0:1}}{{userBasicInfo[0].LastName | slice:0:1}}</div>
+            <div class="user_name">{{userBasicInfo[0].Name}}</div>
+            <div class="dropdown theme-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                style="color: white;"><img src="assets/dots.svg" class="Heaer_profile_Menu_icon"></a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Update Profile</a>
+                <a class="dropdown-item" href="#">Update Bank Details</a>
+                <a class="dropdown-item" (click)="logout()">Sign Out</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="main-container1">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="page-title">
+        <h2 class="dashboard_title">FAQ</h2>
+      </div>
+      <div class="card">
+        <div class="card-container">
+          <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Am I eligible for a loan ?</a>
+                </h4>
+              </div>
+              <div id="collapse1" class="panel-collapse collapse in ">
+                <div class="panel-body">Sorry, Currently we do not offer any personal/consumption loans directly.</div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">How Do I Change My EMI Due
+                    Date?</a>
+                </h4>
+              </div>
+              <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body">We currently do not have an option to change your EMI due date. This is keeping
+                  in mind the uniformity of payment due dates for all our customers.</div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">How to read CIBIL Score ?</a>
+                </h4>
+              </div>
+              <div id="collapse3" class="panel-collapse collapse">
+                <div class="panel-body">The first section of the CIBIL Report is the CIBIL score. A CIBIL score is a
+                  three-digit number that ranges between 300-900. It is calculated based on an individual's credit
+                  behavior and credit history.</div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">What does score of -1(Minus One)
+                    indicates in the CIBIL Report?</a>
+                </h4>
+              </div>
+              <div id="collapse4" class="panel-collapse collapse">
+                <div class="panel-body">A score of -1(Minus One) indicates no credit history or activity in last few
+                  years.</div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">What does score of ‘0’ (zero)
+                    indicates in the CIBIL Report?</a>
+                </h4>
+              </div>
+              <div id="collapse5" class="panel-collapse collapse">
+                <div class="panel-body">A score of 0 (Zero) indicates that your credit history is available only up to a
+                  period of 6 months.</div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">What is the minimum CIBIL score
+                    to get a new loan?</a>
+                </h4>
+              </div>
+              <div id="collapse6" class="panel-collapse collapse">
+                <div class="panel-body">It is generally advisable to have a credit/CIBIL score of 750 or above to
+                  qualify for a personal loan.</div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">How can I improve my CIBIL
+                    score?</a>
+                </h4>
+              </div>
+              <div id="collapse7" class="panel-collapse collapse">
+                <div class="panel-body">To improve and maintain a healthy CIBIL score, ensure you pay your loan EMIs and
+                  credit card bills on time and you should not have multiple outstanding on any loans or credit cards.
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">Does CIBIL Score affect my
+                    chances of getting a new loan or credit card?</a>
+                </h4>
+              </div>
+              <div id="collapse8" class="panel-collapse collapse">
+                <div class="panel-body">Yes. Your CIBIL score reported by Credit Bureau department is one of the key
+                  factors that determine your eligibility for a new credit product.</div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse9">How do I get my NOC ?</a>
+                </h4>
+              </div>
+              <div id="collapse9" class="panel-collapse collapse">
+                <div class="panel-body">The NOC of your matured loan account will be shared on your registered email id
+                  within 48 workings hours of Loan Maturity. In case of any issue please feel free to write us at
+                  customercare@dmifinance.in</div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse10">What types of loan does DMI
+                    Consumer Credit offers?</a>
+                </h4>
+              </div>
+              <div id="collapse10" class="panel-collapse collapse">
+                <div class="panel-body">We offer Personal & Consumption loans through our channel partners.</div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse11">What is Housing Loan from DMI
+                    ?</a>
+                </h4>
+              </div>
+              <div id="collapse11" class="panel-collapse collapse">
+                <div class="panel-body">A Housing Loan from DMI is for the purchase of a new home. It can be either from
+                  a builder or from a previous owner.</div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse12">What is LAP (Loan Against
+                    Property) from DMI Finance?</a>
+                </h4>
+              </div>
+              <div id="collapse12" class="panel-collapse collapse">
+                <div class="panel-body">A Loan Against Property, or LAP, from DMI, is a loan against a home that you
+                  already own and are not in the process of purchasing. DMI helps you to take some of your money that is
+                  locked up in a home by taking the property as collateral.</div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse13">What is a Personal Loan ?</a>
+                </h4>
+              </div>
+              <div id="collapse13" class="panel-collapse collapse">
+                <div class="panel-body">A Personal Loan from DMI is an unsecured loan where we give you the money to
+                  spend on whatever you need and you repay us in EMI over the life of the loan. For instance, a Personal
+                  Loan for Rs. 1 Lakh repaid over 24 months. You get the money today to spend on, say, a wedding, and
+                  then you pay us back in 24 EMIs.</div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse14">What is Consumption/Consumer
+                    Durable Loan ?</a>
+                </h4>
+              </div>
+              <div id="collapse14" class="panel-collapse collapse">
+                <div class="panel-body">A Consumption Loan from DMI is one where you want to buy something today but
+                  need a loan to complete the purchase. Here DMI pays the loan amount to the merchant from whom you are
+                  buying and you repay DMI in monthly EMIs. For instance, you want to buy a smartphone for Rs. 40k but
+                  need to borrow Rs. 30k for 6 months to make the purchase. DMI would pay the seller Rs. 30k, you would
+                  pay the seller Rs. 10k and then you would repay DMI over 6 months. Consumption Loans range from 3
+                  months to 12 months.</div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse15">How can I pay my EMI ?</a>
+                </h4>
+              </div>
+              <div id="collapse15" class="panel-collapse collapse">
+                <div class="panel-body">If you are registered for NACH, your EMI will be debited from the registered
+                  bank account on the payment due date.
+
+                  You can also pay your EMI on HelloDMI if you are not registered for NACH or the NACH has bounced due
+                  to any reason.</div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse16">How long does it takes for a
+                    successful payment transaction to get update in my loan account ?</a>
+                </h4>
+              </div>
+              <div id="collapse16" class="panel-collapse collapse">
+                <div class="panel-body">NACH/eNACH Presentation - 3 days after realization
+
+                  Payment Link - 1 day after realization
+
+                  NEFT/RTGS - 3 days after realization*
+
+                  Cash Deposit in Bank - 3 days after realization*
+
+                  Payment Collected by Channel Partner - 3 days after realization
+
+                  Payment Collected by Collections - 3 days after realization
+
+
+
+                  * Payment proof mandatorily required</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

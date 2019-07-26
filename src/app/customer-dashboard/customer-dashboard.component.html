@@ -1,0 +1,160 @@
+<div class="dashboard_navbar1">
+  <div class="nav_container1">
+    <div class="headerNav_Link1">
+      <a [routerLink]="['/dashboard']" class="header_logo_anch"><img src="assets/logo.png" height="50"></a>
+      <a [routerLink]="['/dashboard']" class="activeSty1">Dashboard</a>
+      <!-- <div class="dropdown theme-dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Loan Accounts
+        </a>
+        <ul dropdownMenu class="dropdown-menu" role="menu" *ngIf="loanDetail">
+          <li *ngFor="let loan of loanDetail;" value="{{loan.Id}}" (click)="selectValue(loan)" class="dropdown-item">
+            {{loan.name}}
+          </li>
+        </ul>
+      </div> -->
+      <a [routerLink]="['/loanOffer']">Offers</a>
+      <a [routerLink]="['/faq']">FAQ</a>
+      <a [routerLink]="['/customerSupport']">Customer Support</a>
+    </div>
+    <div class="profile_icon_div">
+      <div *ngIf="userBasicInfo">
+        <div class="display-flex">
+          <div class="profile_circle">
+            {{userBasicInfo[0].FirstName | slice:0:1}}{{userBasicInfo[0].LastName | slice:0:1}}</div>
+          <div class="user_name">{{userBasicInfo[0].Name}}</div>
+          <div class="dropdown theme-dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              style="color: white;"><img src="assets/dots.svg" class="Heaer_profile_Menu_icon"></a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Update Profile</a>
+              <a class="dropdown-item" href="#">Update Bank Details</a>
+              <a class="dropdown-item" (click)="logout()">Sign Out</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main-container1">
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="page-title">
+        <h2 class="dashboard_title">DASHBOARD</h2>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div *ngIf="userBasicInfo">
+            <div class="tile_user_info">
+              <p class="welcome_user_text">WELCOME</p>
+              <P class="tile_user_name">{{userBasicInfo[0].Name}}</P>
+            </div>
+            <div *ngIf="lastLogin">
+              <P class="last_login">Last Login &nbsp;&nbsp;<span>{{lastLogin | date: 'hh:mm a | dd/MM/yyyy'}}</span></P>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="userBasicInfo">
+          <div class="userInfo-card-container">
+            <div class="flex-Display">Email: <div class="left_45">{{userBasicInfo[0].Email}}</div>
+            </div>
+            <div class="flex-Display">Phone: <div class="left_38">{{userBasicInfo[0].MobilePhone}}</div>
+            </div>
+            <div class="flex-Display">Home Address: <div class="left_24">
+                {{userBasicInfo[0].MailingStreet}}<br>{{userBasicInfo[0].MailingCity}} -
+                {{userBasicInfo[0].MailingPostalCode}}<br>{{userBasicInfo[0].MailingState}}</div>
+            </div>
+          </div>
+        </div>
+        <hr class="tile_userInfo_hr">
+        <div *ngIf="bankAccountDetails" class="account_container">
+          <div class="flex-Display">Bank A/C: <div class="left_74">{{bankAccountDetails[0].Bank_Name__c}}<br>Account
+              Number:
+              {{bankAccountDetails[0].Bank_Account_Number__c}}<br>IFSC:
+              {{bankAccountDetails[0].IFSC_Code__c}}<br>{{bankAccountDetails[0].Address__c}}</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card congrats_card" *ngIf="loanOffer">
+        <div class="card-container">
+          <div class="offer_display_flex"><img src="assets/offer_image.svg" class="offer_icon"><span
+              class="offer_vl_line"></span>
+            <div>
+            <h2 class="offer_header">Congratulations !!</h2>
+            <p class="offer_p">You can avail a pre approved loan of Amount INR {{convertedOfferAmt}} for
+              {{loanOffer[0].Offered_Tenor__c}} months at ROI {{loanOffer[0].Offered_ROI__c}}% per annum.</p>
+            <button type="submit" class="btn" (click)="applyOffer()">Apply Now</button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-7">
+      <div class="page-title loanTitle">
+        <h2 class="dashboard_title" style="margin-left: 24px;">LOAN</h2>
+      </div>
+      <div class="row" *ngIf="loanDetail">
+        <div class="col-sm-6" *ngFor="let loan of loanDetail;">
+          <div class="card loan_card">
+            <div align="center" class="loanheader">
+              <span *ngIf="loan.Pulled_Lead_Source_Name__c == 'LetsMd'"><img src="assets/letsmd.png" style="margin-left: 30px;"></span>
+              <span *ngIf="loan.Pulled_Lead_Source_Name__c == 'Arogya'"><img src="assets/arogya-finance.png" style="margin-left: 7px;"></span>
+              <span *ngIf="loan.Pulled_Lead_Source_Name__c == 'IndiaLends'"><img src="assets/indialends.png"></span>
+              <span *ngIf="loan.Pulled_Lead_Source_Name__c == 'Samsung'"><img src="assets/samsung.png" class="samsung_img"></span>
+              <span *ngIf="loan.Pulled_Lead_Source_Name__c == 'DMI LOS'"><img src="assets/dmi-finance.png"></span>
+              </div>
+            <div class="display_flex" style="position: relative;">
+              <div class="loan_hr_div">
+                <hr class="loan_head_hr">
+              </div>
+              <div class="batch_div" *ngIf="loan.StageName == 'Current'"><a class="batch_btn" style="background:#FF9800">{{loan.StageName}}</a></div>
+              <div class="batch_div" *ngIf="loan.StageName == 'Matured'"><a class="batch_btn" style="background:#4caf50">{{loan.StageName}}</a></div>
+              <div class="batch_div" *ngIf="loan.StageName == 'Delinquent'"><a class="batch_btn" style="background:#E91E63">{{loan.StageName}}</a></div>
+              <div class="batch_div" *ngIf="loan.StageName == 'Settled & Closed'"><a class="batch_btn" style="background:lightgray;color: black!important">{{loan.StageName}}</a></div>
+              <div class="batch_div" *ngIf="loan.StageName == 'Disbursement Approved'"><a class="batch_btn" style="background:#039be5">{{loan.StageName}}</a></div>
+            </div>
+            <div class="loan_card_container">
+              <div class="loan_display_flex">Loan Name<div>{{loan.name}}</div>
+              </div>
+              <div class="loan_display_flex">Disbursal Date<div>{{loan.Disbursement_Date__c | date: 'dd-MMM-yyyy'}}</div>
+              </div>
+              <div class="loan_display_flex">Loan Amount<div>INR {{loan.Sanction_Amount__c | inrFormat}}</div>
+              </div>
+              <div class="loan_display_flex">Tenure<div>{{loan.Loan_Tenor_in_Month__c}} months</div>
+              </div>
+              <div class="loan_display_flex">EMI Due Date<div>{{loan.Date__c | date: 'dd-MMM-yyyy'}}</div>
+              </div>
+              <div class="loan_display_flex">Rate of Interest<div>{{loan.Loan_Rate__c}}%</div>
+              </div>
+              <div class="loan_display_flex">Payable EMI<div>INR {{loan.Net_Payment__c | inrFormat}}</div>
+              </div>
+            </div>
+            <div class="row loanFooterBtn">
+              <div class="col-sm-12" align="right" style="padding-bottom:15px;">
+                <a class="R_ecs">Register for NACH</a><br>
+                <!-- <hr class="R_ecsHr"> -->
+              </div>
+              <div class="col-sm-6 viewDetailSty">
+                <a (click)="loandetail(loan)">View Details</a>
+              </div>
+              <div class="col-sm-6 paynowSty">
+                <a class="" (click)="applyOffer()">Pay Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+<div *ngIf="isLoading" class="overlay">
+  <circle-progress [percent]="100" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
+    [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="10000">
+  </circle-progress>
+</div>

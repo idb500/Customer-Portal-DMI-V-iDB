@@ -1,0 +1,210 @@
+<div class="dashboard_navbar">
+  <div class="nav_container">
+    <div class="headerNav_Link">
+      <a [routerLink]="['/dashboard']" class="header_logo_anch"><img src="assets/logo.png" height="50"></a>
+      <a [routerLink]="['/dashboard']" class="left_18">Dashboard</a>
+      <a [routerLink]="['/loanOffer']">Offers</a>
+      <a [routerLink]="['/faq']">FAQ</a>
+      <a [routerLink]="['/customerSupport']">Customer Support</a>
+    </div>
+    <div class="profile_icon_div">
+      <div *ngIf="userBasicInfo">
+        <div class="display-flex">
+          <div class="profile_circle">
+            {{userBasicInfo[0].FirstName | slice:0:1}}{{userBasicInfo[0].LastName | slice:0:1}}</div>
+          <div class="user_name">{{userBasicInfo[0].Name}}</div>
+          <div class="dropdown theme-dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              style="color: white;"><img src="assets/dots.svg" class="Heaer_profile_Menu_icon"></a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Update Profile</a>
+              <a class="dropdown-item" href="#">Update Bank Details</a>
+              <a class="dropdown-item" (click)="logout()">Sign Out</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sidenav">
+  <hr class="side_nav_hr">
+  <a [routerLink]="['/loanDetail']" class="sideBar_anch_list" style="margin-top:83px;">Account Summary</a>
+  <a [routerLink]="['/welcomeletter']" class="sideBar_anch_list">Welcome Letter</a>
+  <a [routerLink]="['/paymentSchedule']" class="sideBar_anch_list">Payment Schedule</a>
+  <!-- <a (click)="laonStatement()" class="sideBar_anch_list">Account Statement</a> -->
+  <a [routerLink]="['/loanstatement']" class="sideBar_anch_list activeSty">Account Statement</a>
+  <a [routerLink]="['/myDues']" class="sideBar_anch_list">My Dues</a>
+  <a [routerLink]="['/noc']" class="sideBar_anch_list">NOC Document</a>
+  <div class="sideNav-footer">
+    <hr class="side_nav_footer_hr">
+    <div class="footer_list newLoan" [routerLink]="['/newloanapplication']">
+      <a class="footer_anch_list"><img src="assets/loan_account.png" height="28"></a>
+      <div class="dashboard_text">New Loan Application</div>
+    </div>
+    <div class="footer_list" [routerLink]="['/raiseAdispute']">
+      <a class="footer_anch_list"><img src="assets/auction.svg" height="22"></a>
+      <div class="dashboard_text">Raise a Dispute</div>
+    </div>
+    <div class="footer_list" (click)="logout()">
+      <a class="footer_anch_list"><img src="assets/logout.svg" height="24"></a>
+      <div class="dashboard_text">Sign Out</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="main-container">
+  <div class="row">
+    <div class="col-sm-12 page-title">
+      <h2 class="dashboard_title">ACCOUNT STATEMENT</h2>
+      <!-- <div align="center"><img src="assets/under-dev.jpg" style="opacity: .5;margin-left: 22%;margin-top: 5%;"></div> -->
+    </div>
+  </div>
+  <div class="row" *ngIf="loanStatement">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="col-sm-12">Date: {{loanStatement.result3[0].Date__c | date: 'dd-MMM-yyyy'}}</div>
+          <div class="col-sm-12 statement_Header" align="center"><b>STATEMENT OF ACCOUNT</b></div><br>
+          <div class="row statement_row">
+            <div class="col-sm-3">Application No</div>
+            <div class="col-sm-9"></div>
+          </div>
+          <div class="row statement_row">
+            <div class="col-sm-3">Name of Borrower</div>
+            <div class="col-sm-9">{{loanStatement.result2[0].Group_Label__c}}</div>
+          </div>
+          <div class="row statement_row">
+            <div class="col-sm-3">Name of Co-Borrower</div>
+            <div class="col-sm-9"></div>
+          </div><br>
+          <div class="col-sm-12">
+            <table class="statement_table">
+              <tbody>
+                <tr>
+                  <td>Loan Amount Sanctioned</td>
+                  <td>{{loanStatement.result1[0].Amount__c | inrFormat}}</td>
+                  <td>Loan Product</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Disburstment Till Date</td>
+                  <td>00000</td>
+                  <td>Loan Status</td>
+                  <td>Fully Disburse</td>
+                </tr>
+                <tr>
+                  <td>Loan Start Date</td>
+                  <td>00-AAA-0000</td>
+
+
+                  <td>Balance Tenure</td>
+                  <td>{{loanStatement.result2[0].Loan_Tenor_in_Month__c}}</td>
+                </tr>
+                <tr>
+                  <td>Current ROI</td>
+                  <td>{{loanStatement.result3[0].Interest__c}}%</td>
+                  <td>Un-Adjusted Amount</td>
+                  <td>0.00</td>
+                </tr>
+                <tr>
+                  <td>Current EMI</td>
+                  <td>{{loanStatement.result3[0].Net_Payment__c | inrFormat}}</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <div class="col-sm-12 tableHeader">The summary details for the period are as under:</div><br>
+            <table class="statement_table">
+              <thead>
+                <tr>
+                  <th>For the Period</th>
+                  <th>EMI</th>
+                  <th>PEMI</th>
+                  <th>Other Dues</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Opening Balance</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>Receivable during the Period</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>Received during the Period</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>Waived during the period</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>Closing Balance</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+              </tbody>
+            </table><br><br>
+            <!-- <div class="col-sm-12 tableHeader">Transaction during the period:</div><br>
+            <table class="statement_table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Particulars</th>
+                  <th>Amount (Dr.)</th>
+                  <th>Amount (Cr.)</th>
+                  <th>Closing Balance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{loanStatement.result3[0].Date__c | date: 'dd-MMM-yyyy'}}</td>
+                  <td>EMI Due</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>{{loanStatement.result3[0].ClosingPrincipalBal__c}}</td>
+                </tr>
+              </tbody>
+            </table><br><br> -->
+            <div class="col-sm-12 statement_Footer"><b>For DMI Finance Private Limited</b></div><br>
+            <div class="col-sm-12 statement_Footer">
+              <b>Note:</b><br>
+              <p>
+                If you made any recent payment which is not reflected here, give us 48 hours to process.<br>
+                If you find any discrepancy with this statement, kindly bring into our notice within 5 days from issue
+                of this statement
+                failing which we will assume that the statement is correct and is acceptable by you and we will not be
+                help responsible for any loss you may incur.
+              </p>
+            <br>
+            <b>Registered Office:</b>
+            <p>DMI Finance Pvt. Ltd. Express Building, Third Floor, 9-10, Bahadur Shah Zafar Marg, New Delhi - 110002,
+              India +91 11 4120 4444, +91 11 4120 4400 | <a href="dmi@dmifinance.in"><u>dmi@dmifinance.in</u></a> CIN : U65929DL2008PTC182749 </p>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
